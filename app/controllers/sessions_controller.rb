@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
   def login
-    user = User.find_by(username: params[:username])
-    if user && user.authenticate(params[:password])
+    user = User.find_by(username: params[:user][:username])
+    # byebug
+    if user && user.authenticate(params[:user][:password])
       log_in(user)
       render json: user, status: 200
     else

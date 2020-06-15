@@ -8,7 +8,7 @@ const DashboardPage = () => {
     <>
       {!authenticated ? <Redirect to="/" /> : null}
       <div>
-        <h1>Hi, {user}</h1>
+        <h1>Hi, {user.username}</h1>
         <p>you are authenticated</p>
       </div>
     </>
