@@ -19,13 +19,15 @@ const LoginPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(input);
     userActions.logIn(token, input.username, input.password).then((userData) => {
-      if (!Object.keys(userData).includes("errors")) {
+      if (!Object.keys(userData).includes("error")) {
         setUser(userData);
         setAuthenticated(true);
+        setInput({ username: "", password: "" });
       } else {
         // Handle your error message rendering here
+        console.log(userData);
+        setInput({ username: "", password: "" });
       }
     });
   };
@@ -34,8 +36,20 @@ const LoginPage = () => {
     <div>
       {authenticated ? <Redirect to="/dashboard" /> : null}
       <form onSubmit={handleSubmit}>
-        <input type="text" name="username" value={input.username} onChange={handleInput} />
-        <input type="password" name="password" value={input.password} onChange={handleInput} />
+        <input
+          type="text"
+          name="username"
+          value={input.username}
+          onChange={handleInput}
+          placeholder="Username"
+        />
+        <input
+          type="password"
+          name="password"
+          value={input.password}
+          onChange={handleInput}
+          placeholder="Password"
+        />
         <input type="submit" value="Login" />
       </form>
     </div>

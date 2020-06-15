@@ -9,7 +9,7 @@ function App() {
     <UserProvider>
       <Router>
         <Switch>
-          <Route path="/" component={LoginPage} />
+          <Route path="/" exact component={LoginPage} />
           <Route path="/dashboard" component={DashboardPage} />
         </Switch>
       </Router>

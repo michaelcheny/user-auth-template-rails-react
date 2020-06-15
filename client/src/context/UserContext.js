@@ -22,7 +22,7 @@ export default ({ children }) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          if (!Object.keys(data).includes("errors")) {
+          if (!Object.keys(data).includes("error")) {
             console.log(data);
             setUser(data);
             setAuthenticated(true);

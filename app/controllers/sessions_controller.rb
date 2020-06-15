@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     # byebug
     if user && user.authenticate(params[:user][:password])
       log_in(user)
-      render json: user, status: 200
+      render json: user, only: [:id, :username], status: 200
     else
       render json: { error: 'Invalid log in credentials' }, status: 401
     end
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
   def auto_login
     if logged_in?
       user = current_user
-      render json: user, status: 200
+      render json: user, only: [:id, :username], status: 200
     else
       render json: { error: 'Not logged in' }
     end
